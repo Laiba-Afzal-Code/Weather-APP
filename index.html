@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+  <div class="img-back">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <img src="images (1).png" alt="weather" width="34"><a class="navbar-brand" href="#">Weather Max</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About this App</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Weather
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Islamadab</a>
+                <a class="dropdown-item" href="#">Krachi</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">More cities</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input id="city" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <div class="container">
+      <main>
+        <h1 class="mt-4 text-center text-white">Weather for <span id="cityName"></span></h1>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Temperatures</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><span id="temp"></span><small class="text-body-secondary fw-light"><span>&#8451;</span></small></h1>
+                <ul class="list-unstyled mt-3 mb-4" id="main">
+                  <li>Temp_max is <span id="temp_max"></span></li>
+                  <li>Temp_min is <span id="temp_min"></span></li>
+                  <li>Humidity is <span id="humidity"></span></li>
+                  <li>Feels_like is <span id="feels_like"></span></li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal" id="weather">Weather</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"> <span id="country"></span><small class="text-body-secondary fw-light">city</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Description is <span id="description"></span></li>
+                  <li>icon is <span id="icon"></span></li>
+                  <li>id is <span id="id"></span></li>
+                  <li>main is <span id="main"></span></li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Wind</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><span id="speed"></span><small class="text-body-secondary fw-light">km/hr</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li></li>
+                  <li id="wind">deg is <span id="deg"></span></li>
+                  <li>Pressure is <span id="pressure"></span></li>
+                  <li>sunrise time is <span id="sunrise"></span></li>
+                  <li>sunset time is <span id="sunset"></span></li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="display-6 text-center mb-4">Forecasts</h2>
+    
+        <div class="table-responsive" id="forecasts">
+          <table class="table text-center" id="forecasts">
+            <thead>
+              <tr>
+                <th style="width: 34%;"><span id="day"></span></th>
+                <th style="width: 22%;">Date</th>
+                <th style="width: 22%;">High</th>
+                <th style="width: 22%;">Low</th>
+                <th style="width: 22%;">Text</th>
+                <th style="width: 22%;">Code</th>
+                <th style="width: 22%;">Sunrise</th>
+                <th style="width: 22%;">Sunset</th>
+                <th style="width: 22%;">Temp</th>
+                <th style="width: 22%;">Wind_Degrees</th>
+                <th style="width: 22%;">Wind_Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start" id="day">Islamabad</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Krachi</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+    
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Faisalabad</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Gujranwala</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Peshawar</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Lahore</th>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row mx-3">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="images (1).png" alt="" width="54" height="59"><h2>Weather Max</h2>
+            <small class="d-block mb-3 text-body-secondary">© 2017–2023</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool Weather</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Weather feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

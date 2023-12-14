@@ -1,0 +1,19 @@
+html , body{
+    margin: 0;
+    padding: 0;
+    
+}
+.img-back{
+background-image: url(weather.jpeg);
+background-size: cover;
+background-position: center;
+}
+.table{
+    background-color: rgba(174, 205, 232, 0.6);
+
+}
+.col .card{
+    background-color: rgba(132, 172, 208, 0.6);
+    color: white;
+    border: 1px solid white;
+}
